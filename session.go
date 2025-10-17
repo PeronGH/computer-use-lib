@@ -70,10 +70,10 @@ func NewSession(ctx context.Context, config SessionConfig) (*Session, error) {
 	}
 
 	if err := page.SetViewport(&proto.EmulationSetDeviceMetricsOverride{
-		Width:  config.ScreenWidth,
-		Height: config.ScreenHeight,
+		Width:             config.ScreenWidth,
+		Height:            config.ScreenHeight,
 		DeviceScaleFactor: 1,
-		Mobile: false,
+		Mobile:            false,
 	}); err != nil {
 		return nil, err
 	}
