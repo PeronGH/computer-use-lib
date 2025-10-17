@@ -2,7 +2,6 @@ package computeruse
 
 import (
 	"context"
-	"time"
 
 	"github.com/go-rod/rod"
 	"github.com/go-rod/rod/lib/launcher"
@@ -124,10 +123,4 @@ func (s *Session) GetURL() (string, error) {
 		return "", err
 	}
 	return info.URL, nil
-}
-
-// Wait pauses execution for the specified duration
-func (s *Session) Wait(duration time.Duration) error {
-	time.Sleep(duration)
-	return nil
 }

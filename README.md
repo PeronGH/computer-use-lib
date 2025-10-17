@@ -91,7 +91,6 @@ All methods return `error` for proper error handling.
 | `GoBack` | `GoBack() error` | `key` ("Alt+Left") | `go_back` |
 | `GoForward` | `GoForward() error` | `key` ("Alt+Right") | `go_forward` |
 | `Search` | `Search() error` | N/A | `search` |
-| `Wait` | `Wait(duration time.Duration) error` | `wait` | `wait_5_seconds` (with 5s) |
 | `GetURL` | `GetURL() (string, error)` | N/A | N/A |
 | `Close` | `Close() error` | N/A | N/A |
 

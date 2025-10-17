@@ -64,10 +64,8 @@ func main() {
 	}
 	fmt.Println("Typed text")
 
-	// Wait a bit before closing
-	if err := session.Wait(2 * time.Second); err != nil {
-		log.Fatal(err)
-	}
+	// Wait a bit before closing (using standard time.Sleep)
+	time.Sleep(2 * time.Second)
 
 	fmt.Println("Example completed successfully!")
 }
