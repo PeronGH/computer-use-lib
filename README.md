@@ -5,7 +5,7 @@ A Go library for browser-based computer use automation, designed for LLM agents 
 ## Features
 
 - **Unified API**: Single set of commands that work for both Claude and Gemini with minimal adaptation
-- **Flexible Coordinate System**: Choose between normalized (0-999 grid) or pixel-based coordinates
+- **Flexible Coordinate System**: Choose between normalized (for Gemini, 0-999 grid) or pixel-based coordinates
 - **Idiomatic Go**: Proper error handling and clean interface design
 - **Comprehensive Actions**: Supports clicking, typing, scrolling, dragging, keyboard shortcuts, and more
 - **Screenshot Capability**: Capture browser state for visual feedback to LLMs
@@ -107,10 +107,3 @@ go-rod (Browser Control)
          ↓
 Chrome/Chromium Browser
 ```
-
-## Key Design Decisions
-
-1. **Coordinate Normalization**: Optional 0-999 grid system allows LLMs to work with consistent coordinates across different screen sizes
-2. **Unified API**: Single set of commands that map cleanly to both Claude and Gemini interfaces
-3. **Error Handling**: Each method returns an error for proper Go error handling
-4. **Minimal Adaptation**: Developers need minimal effort to support both LLM platforms
