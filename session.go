@@ -51,7 +51,8 @@ func NewSession(ctx context.Context, config SessionConfig) (*Session, error) {
 		Set("disable-dev-shm-usage").
 		Set("disable-background-networking").
 		Set("disable-default-apps").
-		Set("disable-sync")
+		Set("disable-sync").
+		Set("disable-blink-features", "AutomationControlled")
 
 	url, err := l.Launch()
 	if err != nil {
