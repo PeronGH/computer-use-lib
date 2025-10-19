@@ -36,17 +36,7 @@ func (s *Session) Scroll(direction string, amount int) error {
 		return fmt.Errorf("invalid scroll direction: %s (must be up, down, left, or right)", direction)
 	}
 
-	// Use page scroll for document-level scrolling
-	if direction == "down" {
-		return s.Key("PageDown")
-	} else if direction == "up" {
-		return s.Key("PageUp")
-	} else {
-		// For horizontal scroll, use JavaScript
-		script := fmt.Sprintf("window.scrollBy(%f, %f);", deltaX, deltaY)
-		_, err := s.page.Eval(script)
-		return err
-	}
+	return s.page.Mouse.Scroll(deltaX, deltaY, 1)
 }
 
 // ScrollAt scrolls at a specific location on the page
