@@ -36,10 +36,10 @@ func NewSession(ctx context.Context, config SessionConfig) (*Session, error) {
 		config.ScreenHeight = 900
 	}
 	if config.InitialURL == "" {
-		config.InitialURL = "https://www.google.com"
+		config.InitialURL = "about:blank"
 	}
 	if config.SearchEngineURL == "" {
-		config.SearchEngineURL = "https://www.google.com"
+		config.SearchEngineURL = "https://duckduckgo.com"
 	}
 
 	// Launch browser

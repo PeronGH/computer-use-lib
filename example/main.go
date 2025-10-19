@@ -20,9 +20,7 @@ func main() {
 
 	// Create a new browser session
 	session, err := computeruse.NewSession(context.Background(), computeruse.SessionConfig{
-		NormalizeCoordinates: true, // Use 0-999 grid
-		InitialURL:           "https://www.google.com",
-		Headless:             false, // Set to true for headless mode
+		NormalizeCoordinates: true, // Required for Gemini
 	})
 	throwIfErr()
 	defer session.Close()
