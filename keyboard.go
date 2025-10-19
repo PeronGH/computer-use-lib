@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/go-rod/rod/lib/input"
+	"github.com/go-rod/rod/lib/proto"
 )
 
 // Key mapping from user-friendly names to rod key codes
@@ -73,11 +74,6 @@ func (s *Session) TypeTextAt(x, y int, text string, clearBefore, pressEnter bool
 		return err
 	}
 
-	// Wait for click to register
-	if err := s.page.WaitLoad(); err != nil {
-		return err
-	}
-
 	// Clear existing text if requested
 	if clearBefore {
 		// Select all (Cmd+A on macOS, Ctrl+A elsewhere)
@@ -101,18 +97,21 @@ func (s *Session) TypeTextAt(x, y int, text string, clearBefore, pressEnter bool
 		return err
 	}
 
-	if err := s.page.WaitLoad(); err != nil {
-		return err
-	}
-
 	// Press Enter if requested
 	if pressEnter {
+		// Set up navigation listener before pressing Enter
+		// WaitNavigation with proto.PageLifecycleEventNameNetworkIdle waits for navigation
+		// It will handle both navigation and non-navigation cases with timeout
+		wait := s.page.WaitNavigation(proto.PageLifecycleEventNameNetworkIdle)
 		if err := s.Key("Enter"); err != nil {
 			return err
 		}
+		// Wait for navigation to complete, or timeout if no navigation occurs
+		// This handles both cases: form submission (navigation) and chat inputs (no navigation)
+		wait()
 	}
 
-	return s.page.WaitLoad()
+	return nil
 }
 
 // Key presses a key or key combination
